@@ -1,9 +1,18 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import {populateProduce} from './store/produce';
 import Cart from './components/Cart';
 import ProduceList from './components/ProduceList';
 
 function App() {
+  const dispatch = useDispatch();
   const [showCart, setShowCart] = useState(false);
+
+  // NOTE: There is a slight problem with this useEffect; can you find it?
+  // answer: put dispatch into the [] or do not include it
+  useEffect(() => {
+    dispatch(populateProduce());
+  }, [dispatch]);
 
   return (
     <>
