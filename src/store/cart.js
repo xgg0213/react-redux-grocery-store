@@ -1,4 +1,5 @@
 const ADD_ITEM = 'cart/addItem';
+const REMOVE_ITEM = 'cart/removeItem';
 
 export default function cartReducer (state={}, action) {
     switch (action.type) {
@@ -13,6 +14,12 @@ export default function cartReducer (state={}, action) {
                     }
             }
           }
+        case REMOVE_ITEM: {
+            const id = action.payload;
+            const newState = {...state};
+            delete newState[id];
+            return {...newState};
+        }
         default:
             return state
     }
@@ -24,5 +31,12 @@ export function addItem(payload) {
     return {
         type: ADD_ITEM,
         payload
+    }
+}
+
+export function removeItem(payload) {
+    return {
+        type: REMOVE_ITEM,
+        payload,
     }
 }

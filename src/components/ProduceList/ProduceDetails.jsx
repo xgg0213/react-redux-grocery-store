@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import {addItem} from '../../store/cart';
+import {addItem, removeItem} from '../../store/cart';
 
 
 function ProduceDetails({ produce }) {
