@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import {addItem, removeItem} from '../../store/cart';
+import {addItem} from '../../store/cart';
+import { likeItem } from "../../store/produce";
 
 
 function ProduceDetails({ produce }) {
@@ -7,12 +8,14 @@ function ProduceDetails({ produce }) {
   const cartItem = useSelector((state) => state.cart[produce.id]);
 
   const handleAdd = () => dispatch(addItem(produce.id));
+  const handleLike = () => dispatch(likeItem(produce.id))
 
   return (
     <li className="produce-details">
       <span>{produce.name}</span>
       <span>
         <button
+          onClick={handleLike}
           className={"like-button" + (produce.liked ? " selected" : "")}
         >
           <i className={"fas fa-heart"} />

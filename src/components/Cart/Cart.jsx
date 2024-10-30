@@ -1,4 +1,5 @@
 import CartItem from './CartItem';
+import {emptyCart} from '../../store/cart'
 import './Cart.css';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -39,7 +40,7 @@ function Cart() {
       "Purchased the following:\n" +
       `${cartItems.map(item => `${item.count} of ${item.name}`).join('\n')}`
     );
-    // dispatch(emptyCart())
+    dispatch(emptyCart())
   }
 
   return (

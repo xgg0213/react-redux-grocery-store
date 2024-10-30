@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { removeItem } from '../../store/cart';
+import { removeItem, addIncrement, addDecrement } from '../../store/cart';
 import { useDispatch } from 'react-redux';
 
 function CartItem({ item }) {
@@ -10,6 +10,14 @@ function CartItem({ item }) {
 	// dispatch the removeItem action and use the item's id to remove it
 	// from the cart
   const handleRemove = () => dispatch(removeItem(item.id))
+
+  // On click evnet listener. when we click the + button we'll
+  // dispatch the addIncrement action and use the item's id to add increment
+  const handleIncrement = () => dispatch(addIncrement(item.id))
+
+  // On click evnet listener. when we click the - button we'll
+  // dispatch the addDecrement action and use the item's id to add decrement
+  const handleDecrement = () => dispatch(addDecrement(item.id))
 
   useEffect(() => {
     setCount(item.count);
@@ -24,12 +32,12 @@ function CartItem({ item }) {
           value={count}
         />
         <button
-          className="cart-item-button"
+          className="cart-item-button" onClick={handleIncrement}
         >
           +
         </button>
         <button
-          className="cart-item-button"
+          className="cart-item-button" onClick={handleDecrement}
         >
           -
         </button>
