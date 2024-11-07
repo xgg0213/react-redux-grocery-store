@@ -1,4 +1,5 @@
-import produceData from '../mockData/produce.json'
+import produceData from '../mockData/produce.json';
+import { createSelector } from 'reselect'
 
 const POPULATE = 'produce/POPULATE';
 const LIKE_ITEM = 'cart/likeItem';
@@ -42,3 +43,8 @@ export function likeItem(payload) {
         payload
     }
 }
+
+// with createSelector
+export const selectProduce = (state) => state.produce;
+export const selectProduceArray =
+  createSelector(selectProduce, (produce) => Object.values(produce));

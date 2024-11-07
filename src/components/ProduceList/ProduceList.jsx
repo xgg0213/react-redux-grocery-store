@@ -1,12 +1,16 @@
 import { useSelector} from 'react-redux';
 import ProduceDetails from './ProduceDetails';
+import { selectProduceArray } from '../../store/produce';
 import './ProduceList.css';
 
 function ProduceList() {
   
-  const produce = useSelector(state => state.produce);
+  // option 1: without selectProduceArray
+  // const produce = useSelector(state => state.produce);
+  // const produceArr = Object.values(produce);
 
-  const produceArr = Object.values(produce);
+  // option 2: with selectProduceArray
+  const produceArr = useSelector(selectProduceArray);
 
   return (
     <>
